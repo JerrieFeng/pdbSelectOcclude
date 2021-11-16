@@ -6,48 +6,72 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pdbSelectOcclude is to …
+## Description
+
+`pdbSelectOcclude` is an R package for visualizing relationships between
+protein structural and non-spatial data, and for selecting occluding
+structures in a 3D molecular visualization environment. The objective of
+the package is to help improve current selecting (aka brushing) protein
+structural residues techniques. Currently, most brushing techniques
+(such as point-and-click) for 3D spatial data do not work well for
+occluded structures (i.e. molecular structures that are insidea protein
+and not just on its surfaces). The package is targeted for those who are
+interested in molecular visualization.
+
+This includes the main components: DESCRIPTION, NAMESPACE, man
+subdirectory and R subdirectory. Additionally, licence, README and
+subdirectories vignettes, tests, data and inst are also explored. To
+develop this package, R (version 4.0.2) and Mac platform was used.
 
 ## Installation
 
 You can install the development version of pdbSelectOcclude like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+require("devtools")
+devtools::install_github("JerrieFeng/pdbSelectOcclude", build_vignettes = TRUE)
+library("pdbSelectOcclude")
 ```
 
-## Example
+To run the shinyApp: Under construction
 
-This is a basic example which shows you how to solve a common problem:
+## Overview
 
 ``` r
-library(pdbSelectOcclude)
-## basic example code
+ls("package:pdbSelectOcclude")
+data(package = "pdbSelectOcclude") # optional
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+`pdbSelectOcclude` contains 3 functions. The InfCriteriaCalculation
+function calculates the information criteria values. Specifically,
+Bayesian information criterion (BIC), Akaike information criterion (AIC)
+and Integrated Complete Likelihood (ICL) are calculated. The
+InfCriteriaPlot generates a plot of information criteria values.
+NormFactors is a function that calculates normalization factors via
+Trimmed Mean of M-values (TMM). The runTestingPackage is the function
+that launches the shiny app for this package. The package also contains
+RNA sequencing dataset GeneCounts. Refer to package vignettes for more
+details.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+browseVignettes("pdbSelectOcclude")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+## Contributions
 
-You can also embed plots, for example:
+The author of the package is Jerrie Feng. The InfCriteriaCalculation
+function makes use of map function from mclust R package to generate ICL
+values. The stats R package is used for generating multinomially
+distributed random number vectors. (If applies: Part of the code for
+InfCriteriaCalculation function has been taken from <NamePackage> R
+package. Section of the borrowed code is clearly indicated and
+referenced in the InfCriteriaCalculation help file). The InfCriteriaPlot
+makes use of the graphics R package. NormFactors uses Trimmed Mean of
+M-values (TMM) as implemented in edgeR R package.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+## References
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+## Acknowledgements
+
+This package was developed as part of an assessment for 2021 BCB410H:
+Applied Bioinfor-matics, University of Toronto, Toronto, CANADA.
