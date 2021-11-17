@@ -42,16 +42,11 @@ ls("package:pdbSelectOcclude")
 data(package = "pdbSelectOcclude") # optional
 ```
 
-`pdbSelectOcclude` contains 3 functions. The InfCriteriaCalculation
-function calculates the information criteria values. Specifically,
-Bayesian information criterion (BIC), Akaike information criterion (AIC)
-and Integrated Complete Likelihood (ICL) are calculated. The
-InfCriteriaPlot generates a plot of information criteria values.
-NormFactors is a function that calculates normalization factors via
-Trimmed Mean of M-values (TMM). The runTestingPackage is the function
-that launches the shiny app for this package. The package also contains
-RNA sequencing dataset GeneCounts. Refer to package vignettes for more
-details.
+`pdbSelectOcclude` contains 3 functions. The visPDB function is able to
+visualize the protein structure given a PDB file. The interactPDB
+function allows user to interact with the 3D structure of the protein.
+The occludePDB function analyzes the protein sequences and enables users
+to select occluding components.
 
 ``` r
 browseVignettes("pdbSelectOcclude")
@@ -59,17 +54,22 @@ browseVignettes("pdbSelectOcclude")
 
 ## Contributions
 
-The author of the package is Jerrie Feng. The InfCriteriaCalculation
-function makes use of map function from mclust R package to generate ICL
-values. The stats R package is used for generating multinomially
-distributed random number vectors. (If applies: Part of the code for
-InfCriteriaCalculation function has been taken from <NamePackage> R
-package. Section of the borrowed code is clearly indicated and
-referenced in the InfCriteriaCalculation help file). The InfCriteriaPlot
-makes use of the graphics R package. NormFactors uses Trimmed Mean of
-M-values (TMM) as implemented in edgeR R package.
+The author of the package is Jerrie Feng. The visPDB function is able to
+visualize the protein structure given a PDB file.
 
 ## References
+
+Skjaerven, L., Yao X.Q., Grant B.J. (2006). Getting started with Bio3D.
+Grant Lab: ComputationalBiophysics & Bioinformatics.
+<http://thegrantlab.org/bio3d/articles/online/intro_vignette/Bio3D_introduction.html#references-1>.
+
+Su, W., Johnston, B. (2021). r3dmol: Create Interactive 3D
+Visualizations of Molecular Data.
+Github.https://github.com/swsoyee/r3dmol.
+
+Xiao, N. (2019). protr: R package for generating various numerical
+representation schemes of pro-tein sequences. ProtrWeb.
+<https://cran.r-project.org/web/packages/protr/vignettes/protr.html#1_introduction>.
 
 ## Acknowledgements
 
