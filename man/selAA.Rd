@@ -2,7 +2,7 @@
 % Please edit documentation in R/selAA.R
 \name{selAA}
 \alias{selAA}
-\title{Visualize occluded AA of PDB}
+\title{Visualize occluded AA}
 \usage{
 selAA(index, pdbFile, name)
 }
@@ -21,8 +21,8 @@ Returns chosen AA, and it displays the 3D model of the protein with
 the selected AA visible.
 }
 \description{
-Function that takes a PDB file and visualizes it as a 3D model. The user to select which AA to view.
-This function allows user to interact and view occluded AA.
+Function that takes a PDB file and visualizes it as a 3D model. The user to
+select which AA to view. This function allows user to interact and view occluded AA.
 }
 \examples{
 # Using pdb file available with package

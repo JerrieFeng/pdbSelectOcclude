@@ -1,26 +1,28 @@
-#' Visualize occluded AA
+#' Visualize occluded chains
 #'
-#' Function that takes a PDB file and visualizes it as a 3D model. The user to
-#' select which AA to view. This function allows user to interact and view occluded AA.
+#' Function that takes a PDB file and visualizes it as a 3D model. The user to select
+#' which chain to view. This function allows user to interact and view occluded chains.
 #'
-#' @param index Valid residue index that refers to a AA code found in sequence.
-#' The index can be found in showInfoPDB as the a number within the
-#' range of code_unique.
+#' @param index Valid index that refers to a chain found in the protein. Run 'showInfoPDB'
+#' to get all possible chains in chain_info
 #' @param pdbFile A PDB file, could be downloaded from PDB online
 #' @param name the 4-letter PDB codes/identifiers of the PDB file
 #' to be visualized.
 #'
-#' @return Returns chosen AA, and it displays the 3D model of the protein with
-#' the selected AA visible.
+#' @return Returns chosen chain, and it displays the 3D model of the protein with
+#' the selected chain visible.
 #'
 #' @examples
-#' # Using pdb file available with package
-#' selAA(1, pdb, "1bm8")
+#' # Using pdb2 file available with package
+#' selChain(1, pdb2, "1SI4")
 #'
 #'
 #' @references
 #' Yao, X., G. Scarabelli, L. Skjaerven, and B. Grant (2020). Protein Structure Networks with Bio3D.
 #' bio3D. http://thegrantlab.org/bio3d/articles/online/cna_vignette/cna_vignette.spin.html#references-1.
+#'
+#' Yao, X., G. Scarabelli, L. Skjaerven, and B. Grant (2020). chain.pdb: Find Possible PDB Chain Breaks.
+#' bio3D. https://rdrr.io/cran/bio3d/man/chain.pdb.html.
 #'
 #' Su, W. (2021). Introduction to r3dmol. r3dmol.
 #' https://cran.r-project.org/web/packages/r3dmol/vignettes/r3dmol.html.
@@ -31,18 +33,18 @@
 #' @import r3dmol
 
 
-selAA <- function(index, pdbFile, name){
+selChain <- function(index, pdbFile, name){
 
   # Get info from showInfoPDB
   infoPDB <- pdbSelectOcclude::showInfoPDB(pdbFile, name)
 
   #Check if given index is valid
-  if( index <= length(infoPDB$AA_info$code_unique) & index > 0){
-    cat( paste("Chosen AA is: ", infoPDB$AA_info$code_unique[index]) )
+  if( index <= length(infoPDB$chain_info$chains) & index > 0){
+    cat( paste("Chosen chain is: ", infoPDB$chain_info$chains[index]) )
   } else{
-    stop("The index is out of range. Please make sure the index is a number within
-       the possible AA sequences. Refer to `length(infoPDB$AA_info$code_unique)` to
-       find the max index that can be inputed.")
+    stop( paste("Index number out of range! Please pick one of the chains that
+                exist in the protein: ", toString(infoPDB$chain_info$chains),
+                ". \n Pick by their index number (1,2,3...etc).") )
   }
 
   #Visualize the protein
@@ -54,16 +56,19 @@ selAA <- function(index, pdbFile, name){
       style = c(
         m_style_cartoon(color="#636efa")
       ),
-      sel = m_sel(resn = infoPDB$AA_info$code_unique[index])
-    ) %>%
+      sel = m_sel(chain = infoPDB$chain_info$chains[index])
+    )  %>%
     m_add_style(
       style = c(
         m_style_cartoon(opacity = 0.4)
       ),
-      sel = m_sel(resn = infoPDB$AA_info$code_unique[-index])
+      sel = m_sel(chain = infoPDB$chain_info$chains[-index])
     ) %>% m_add_label(
-      text = infoPDB$AA_info$code_unique[index],
-      sel = m_vector3(-6.85, 0.70, 0.30),
+      text = paste("Residue Number:",
+                   infoPDB$chain_info$residue_num[index], ":",
+                   infoPDB$chain_info$residue_num[index+1],
+                   ", Chain:", infoPDB$chain_info$chains[index]),
+      sel = m_vector3(-6.89, 0.75, 0.35),
       style = m_style_label(inFront = FALSE))
 
 }
@@ -73,11 +78,11 @@ selAA <- function(index, pdbFile, name){
 
 
 
-#' Visualize occluded AA with Shiny
+#' Visualize occluded chains with Shiny
 #'
 #' Function that takes a PDB file and visualizes it with Shiny. It creates a
-#' slider for the user to select which AA to view. This function allows user to
-#' interact and view occluded AA.
+#' slider for the user to select which chain to view. This function allows user to
+#' interact and view occluded protein chains.
 #'
 #' @param pdbFile A PDB file, could be downloaded from PDB online
 #' @param name the 4-letter PDB codes/identifiers of the PDB file
@@ -86,8 +91,8 @@ selAA <- function(index, pdbFile, name){
 #' @return None - it opens up shiny app with protein structure shown.
 #'
 #' @examples
-#' # Using pdb file available with package
-#' selAASlider(pdb, "1bm8")
+#' # Using pdb2 file available with package
+#'
 #'
 #' @references
 #' Chang, W, et al. (2017). Using sliders. Shiny from Rstudio.
@@ -100,7 +105,7 @@ selAA <- function(index, pdbFile, name){
 #' @import shiny
 
 
-selAASlider <- function(pdbFile, name){
+selChainSlider <- function(pdbFile, name){
 
   # Get info from showInfoPDB
   infoPDB <- pdbSelectOcclude::showInfoPDB(pdbFile, name)
@@ -109,7 +114,7 @@ selAASlider <- function(pdbFile, name){
   ui <- fluidPage(
 
     # Title ----
-    titlePanel("Select occluding Amino acid by residue index"),
+    titlePanel("Select occluding Chains by corresponding index"),
 
     # Sidebar layout with input and output definitions ----
     sidebarLayout(
@@ -117,8 +122,8 @@ selAASlider <- function(pdbFile, name){
       # Sidebar for slider options ----
       sidebarPanel(
         # Input:
-        sliderInput("resn", "Residue Index:",
-                    min = 1, max = length(infoPDB$AA_info$code_unique),
+        sliderInput("resi", "Chain index:",
+                    min = 1, max = length(infoPDB$chain_info$chains),
                     value = 1,
                     step = 1),
       ),
@@ -134,7 +139,7 @@ selAASlider <- function(pdbFile, name){
   # Define server logic
   server <- function(input, output) {
     output$model <- renderR3dmol({
-      pdbSelectOcclude::selAA(input$resn, pdbFile, name)
+      pdbSelectOcclude::selChain(input$resi, pdbFile, name)
     })
   }
 

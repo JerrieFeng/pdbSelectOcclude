@@ -2,6 +2,8 @@
 
 export(selAA)
 export(selAASlider)
+export(selChain)
+export(selChainSlider)
 export(showInfoPDB)
 import(bio3d)
 import(dplyr)
