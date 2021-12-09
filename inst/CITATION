@@ -1,0 +1,12 @@
+citHeader("To cite pdbSelectOcclude in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "pdbSelectOcclude: R Package for selecting occluding structures in a 3D molecular visualization environment",
+  author   = "Jerrie Feng",
+  year     = "2021",
+  note   = "Developed as part of assessment for BCB410 course project submission.",
+  textVersion = paste(
+    "Feng, J. (2021) pdbSelectOcclude: R Package for selecting occluding structures in a 3D molecular visualization environment. Unpublished. URL: https://github.com/JerrieFeng/pdbSelectOcclude."
+  )
+)

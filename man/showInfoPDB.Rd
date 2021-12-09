@@ -21,9 +21,10 @@ Function that takes a PDB file as input, and then extracts the AA (amino acid)
 information, and chain information of the chosen protein.
 }
 \examples{
-# Using pdb2 file available with package
+# Using pdb2 and pdb file available with package
 showInfoPDB(pdb, "1bm8")
 
+showInfoPDB(pdb2, "1si4")
 
 }
 \references{
