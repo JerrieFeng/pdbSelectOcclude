@@ -42,7 +42,7 @@ selAA <- function(index, pdbFile, name){
   } else{
     stop("The index is out of range. Please make sure the index is a number within
        the possible AA sequences. Refer to `length(infoPDB$AA_info$code_unique)` to
-       find the max index that can be inputed.")
+       find the max index that can be inputed. Index starts at 1. ")
   }
 
   #Visualize the protein

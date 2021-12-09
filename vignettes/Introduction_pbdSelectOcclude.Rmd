@@ -65,30 +65,51 @@ Example:
 pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1DUX"))
 infoPDB <- showInfoPDB(pdbFile, "1DUX")
 View(infoPDB)
+
 # Returns a list of 3 with AA info and Chain info
 ```
 
- *selAASlider* function allow users to interact with any AA 
-with a slider through Shiny App. *selChain* function allow users to select an 
-[occluded] chain to view and interact with. *selChainSlider* function allow users
-to interact with any chain with a slider through Shiny App.
-
-* The **selAA** A function allow users to select an AA (may or may not be occluded) to view and interact with.
+* The **selAA** A function that allow users to select an AA (may or may not be occluded) to view and interact with. The output will display the protein with only the selected AA visible, while the rest is translucent. 
 Example:
 ```r
 pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1bm8"))
 selAA(1, pdbFile, "1bm8")
+
+selAA(2, pdb2, "1si4") #use package's data
+
 #Returns an output (on console) stating the selected AA. It will display the 3D protein model. 
 ```
 
-* The **InfeVacPlot** A function that generates the plotting demonstrating the correlation of COVID-19 vaccination and infection in Canada.
+* The **selAASlider** A function that allow users to interact with any AA with a slider 
+through Shiny App. Use the slider to select which AA to view. 
 Example:
 ```r
-InfeVacPlot(TRUE, TRUE, TRUE)
-#Returns a line plot that demonstrates the correlation of
-#COVID-19 vaccination(vaccinated & fully vaccinated) and
-#infection(infection & death) in Canada.
+pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1bm8"))
+selAASlider(pdbFile, "1bm8") 
+
+#Shows the protein model on Shiny app.  
 ```
+
+* The **selChain** A function that allow users to select a chain (may or may not occluded) 
+to view and interact with. The output will display the protein with only the selected chain visible, 
+while the rest is translucent. 
+Example:
+```r
+pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1SI4"))
+selChain(1, pdbFile, "1SI4") 
+
+#Returns an output (on console) stating the selected chain. It will display the 3D protein model.   
+```
+
+* The **selChainSlider** A function that allow users to interact with any chain with a slider viewed on Shiny App.
+Example:
+```r
+pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1SI4"))
+selChainSlider(pdbFile, "1SI4") 
+
+#Shows the protein model on Shiny app.    
+```
+
 <div style="text-align:center"><img src="selAA.png" alt="selecting occluding amino acid" width="500"/>
 <br>
 
