@@ -19,7 +19,6 @@ test_that("Testing that selAA returns correct information", {
 
 
 #context("Checking for invalid user input for selAA")
-
 test_that("selAA error upon invalid user input", {
 
   index = 1
@@ -35,14 +34,16 @@ test_that("selAA error upon invalid user input", {
 
   #Doesn't provide correct 4-letter code/identifier
   expect_error(selAA <- selAA(
+    index = index,
     pdbFile = pdbFile,
     name = "1DUX"
   ))
 
   #Doesn't provide a PDB file
   expect_error(selAA <- selAA(
-    pdbFile = "1DUX",
-    name = "1DUX"
+    index = index,
+    pdbFile = "1bm8",
+    name = name
   ))
 
 })

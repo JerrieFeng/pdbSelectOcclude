@@ -1,8 +1,8 @@
-#context("testing showInfoPDB")
 library(pdbSelectOcclude)
 
+#context(Testing that showInfoPDB returns correct information)
 
-test_that("Testing that showInfoPDB returns correct information", {
+test_that("showInfoPDB with PDB file from package's data", {
 
   pdbFile = pdb
   name = "1bm8"
@@ -18,7 +18,7 @@ test_that("Testing that showInfoPDB returns correct information", {
 
 })
 
-test_that("Testing with user's own PDB file", {
+test_that("showInfoPDB with user's own PDB file", {
 
   pdbFile = bio3d::read.pdb(bio3d::get.pdb("1DUX"))
   name = "1DUX"
@@ -33,6 +33,23 @@ test_that("Testing with user's own PDB file", {
   expect_length(showInfoPDB, 3)
 
 })
+
+test_that("Testing for non-sensitive CAPS for name", {
+
+  pdbFile = pdb
+  name = "1BM8" #Should work regardless of "1BM8" or "1bm8"
+
+  showInfoPDB <- showInfoPDB(
+    pdbFile = pdbFile,
+    name = name
+  )
+
+  expect_equal(showInfoPDB$nam, "1BM8")
+  expect_type(showInfoPDB, "list")
+  expect_length(showInfoPDB, 3)
+
+})
+
 
 
 #context("Checking for invalid user input for showInfoPDB")
@@ -56,8 +73,8 @@ test_that("showInfoPDB error upon invalid user input", {
 
   #Doesn't provide a PDB file
   expect_error(showInfoPDB <- showInfoPDB(
-    pdbFile = "1DUX",
-    name = "1DUX"
+    pdbFile = "1bm8",
+    name = name
   ))
 
 })

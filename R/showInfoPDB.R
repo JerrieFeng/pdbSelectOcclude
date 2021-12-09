@@ -28,8 +28,9 @@
 
 showInfoPDB <- function(pdbFile, name){
 
-  # Check if the name and given PDB file refers to the same protein
-  if(any(grepl(name, pdbFile, fixed = TRUE)) & nchar(name) == 4){
+  # Check if the name and given PDB file refer to the same protein
+  if(any(grepl(name, pdbFile, ignore.case=TRUE))
+     & nchar(name) == 4){
     cat("Ok the PDB file and given name match :) \n")
   }else{
     stop("The PDB given and the name provided don't match! Make sure you've entered
