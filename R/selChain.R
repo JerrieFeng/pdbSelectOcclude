@@ -48,22 +48,22 @@ selChain <- function(index, pdbFile, name){
   }
 
   #Visualize the protein
-  r3dmol() %>%
-    m_add_model(data = m_fetch_pdb(name)) %>%
-    m_set_style(style = m_style_cartoon()) %>%
-    m_zoom_to() %>%
-    m_add_style(
+  r3dmol::r3dmol() %>%
+    r3dmol::m_add_model(data = r3dmol::m_fetch_pdb(name)) %>%
+    r3dmol::m_set_style(style = r3dmol::m_style_cartoon()) %>%
+    r3dmol::m_zoom_to() %>%
+    r3dmol::m_add_style(
       style = c(
         m_style_cartoon(color="#636efa")
       ),
       sel = m_sel(chain = infoPDB$chain_info$chains[index])
     )  %>%
-    m_add_style(
+    r3dmol::m_add_style(
       style = c(
-        m_style_cartoon(opacity = 0.4)
+        r3dmol::m_style_cartoon(opacity = 0.4)
       ),
       sel = m_sel(chain = infoPDB$chain_info$chains[-index])
-    ) %>% m_add_label(
+    ) %>% r3dmol::m_add_label(
       text = paste("Residue Number:",
                    infoPDB$chain_info$residue_num[index], ":",
                    infoPDB$chain_info$residue_num[index+1],

@@ -46,22 +46,22 @@ selAA <- function(index, pdbFile, name){
   }
 
   #Visualize the protein
-  r3dmol() %>%
-    m_add_model(data = m_fetch_pdb(name)) %>%
-    m_set_style(style = m_style_cartoon()) %>%
-    m_zoom_to() %>%
-    m_add_style(
+  r3dmol::r3dmol() %>%
+    r3dmol::m_add_model(data = r3dmol::m_fetch_pdb(name)) %>%
+    r3dmol::m_set_style(style = r3dmol::m_style_cartoon()) %>%
+    r3dmol::m_zoom_to() %>%
+    r3dmol::m_add_style(
       style = c(
-        m_style_cartoon(color="#636efa")
+        r3dmol::m_style_cartoon(color="#636efa")
       ),
       sel = m_sel(resn = infoPDB$AA_info$code_unique[index])
     ) %>%
-    m_add_style(
+    r3dmol::m_add_style(
       style = c(
         m_style_cartoon(opacity = 0.4)
       ),
       sel = m_sel(resn = infoPDB$AA_info$code_unique[-index])
-    ) %>% m_add_label(
+    ) %>% r3dmol::m_add_label(
       text = infoPDB$AA_info$code_unique[index],
       sel = m_vector3(-6.85, 0.70, 0.30),
       style = m_style_label(inFront = FALSE))
