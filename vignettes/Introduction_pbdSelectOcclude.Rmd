@@ -57,6 +57,32 @@ data(package = "pdbSelectOcclude")
 
 <div style="text-align:center"><img src="SILVA_A_A1.png" alt="SILVA_A_A1" width="500"/>
 
+##Set up
+
+There are 5 functions in `pdbSelectOcclude`. All which require *bio3d*, *r3dmol*, and *dplyr*. If we wish to interact with the 3D protein models, then Shiny will also need to be installed.
+
+```r
+if (! requireNamespace("dplyr", quietly=TRUE)) {
+  install.packages("dplyr")
+}
+library(dplyr)
+
+if (! requireNamespace("bio3d", quietly=TRUE)) {
+  install.packages("bio3d")
+}
+library(bio3d)
+
+if (! requireNamespace("r3dmol", quietly=TRUE)) {
+  install.packages("r3dmol")
+}
+library(r3dmol)
+
+if (! requireNamespace("shiny", quietly=TRUE)) {
+  install.packages("shiny")
+}
+library(shiny)
+```
+
 ## Functions
 
 * The **showInfoPDB** A function that takes a PDB file as input, and then returns the AA (amino acid) and chain information of the chosen protein.
