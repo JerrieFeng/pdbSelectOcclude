@@ -43,6 +43,9 @@ selAASlider(pdb, "1bm8")
 selChainSlider(pdb2, "1SI4")
 ```
 
+![](./inst/extdata/selAA.png)
+
+
 ## Overview
 
 ``` r
@@ -63,8 +66,6 @@ An overview of the package and examples of what it should produce is illustrated
 ![](./inst/extdata/overview.png)
 
 ![](./inst/extdata/selChain.png)
-
-![](./inst/extdata/selAA.png)
 
 ``` r
 browseVignettes("pdbSelectOcclude")
