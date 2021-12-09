@@ -58,7 +58,8 @@ data(package = "pdbSelectOcclude")
 
 ##Set up
 
-There are 5 functions in `pdbSelectOcclude`. All which require *bio3d*, *r3dmol*, and *dplyr*. If we wish to interact with the 3D protein models, then Shiny will also need to be installed.
+There are 5 functions in `pdbSelectOcclude`. All which require *bio3d*, *r3dmol*, and *dplyr*. Shiny will also
+need to be installed in order to interact with the 3D protein models.
 
 ```r
 if (! requireNamespace("dplyr", quietly=TRUE)) {
@@ -105,8 +106,7 @@ selAA(2, pdb2, "1si4") #use package's data
 #Returns an output (on console) stating the selected AA. It will display the 3D protein model. 
 ```
 
-* The **selAASlider** A function that allow users to interact with any AA with a slider 
-through Shiny App. Use the slider to select which AA to view. 
+* The **selAASlider** A function that allow users to interact with any AA with a slider. Use the slider to select which AA to view on Shiny app. 
 Example:
 ```r
 pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1bm8"))
@@ -126,7 +126,8 @@ selChain(1, pdbFile, "1SI4")
 #Returns an output (on console) stating the selected chain. It will display the 3D protein model.   
 ```
 
-* The **selChainSlider** A function that allow users to interact with any chain with a slider viewed on Shiny App.
+* The **selChainSlider** A function that allow users to interact with any chain with a slider. It opens
+the slider and 3D model on Shiny app.
 Example:
 ```r
 pdbFile <- bio3d::read.pdb(bio3d::get.pdb("1SI4"))
