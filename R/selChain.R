@@ -92,7 +92,7 @@ selChain <- function(index, pdbFile, name){
 #'
 #' @examples
 #' # Using pdb2 file available with package
-#'
+#' selChainSlider(pdb2, "1SI4")
 #'
 #' @references
 #' Chang, W, et al. (2017). Using sliders. Shiny from Rstudio.
