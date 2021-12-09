@@ -22,7 +22,7 @@ interact and view occluded protein chains.
 }
 \examples{
 # Using pdb2 file available with package
-
+selChainSlider(pdb2, "1SI4")
 
 }
 \references{

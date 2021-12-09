@@ -10,8 +10,8 @@
 #' @param name the 4-letter PDB codes/identifiers of the PDB file
 #' to be visualized.
 #'
-#' @return Returns chosen AA, and it displays the 3D model of the protein with
-#' the selected AA visible.
+#' @return Returns output-text stating the chosen AA, and it displays the 3D
+#' model of the protein with the selected AA visible.
 #'
 #' @examples
 #' # Using pdb file available with package

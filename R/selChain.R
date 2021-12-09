@@ -9,8 +9,8 @@
 #' @param name the 4-letter PDB codes/identifiers of the PDB file
 #' to be visualized.
 #'
-#' @return Returns chosen chain, and it displays the 3D model of the protein with
-#' the selected chain visible.
+#' @return Returns output-text stating the chain, and it displays the 3D model
+#' of the protein with the selected chain visible.
 #'
 #' @examples
 #' # Using pdb2 file available with package

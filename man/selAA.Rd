@@ -17,8 +17,8 @@ range of code_unique.}
 to be visualized.}
 }
 \value{
-Returns chosen AA, and it displays the 3D model of the protein with
-the selected AA visible.
+Returns output-text stating the chosen AA, and it displays the 3D
+model of the protein with the selected AA visible.
 }
 \description{
 Function that takes a PDB file and visualizes it as a 3D model. The user to

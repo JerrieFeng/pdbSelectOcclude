@@ -16,8 +16,8 @@ to get all possible chains in chain_info}
 to be visualized.}
 }
 \value{
-Returns chosen chain, and it displays the 3D model of the protein with
-the selected chain visible.
+Returns output-text stating the chain, and it displays the 3D model
+of the protein with the selected chain visible.
 }
 \description{
 Function that takes a PDB file and visualizes it as a 3D model. The user to select
