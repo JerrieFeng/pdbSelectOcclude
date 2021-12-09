@@ -62,6 +62,8 @@ interact with any chain with a slider through Shiny App.
 An overview of the package and examples of what it should produce is
 illustrated below.
 
+![](./inst/extdata/overview.png)
+
 ![](./inst/extdata/selChain.png)
 
 ![](./inst/extdata/selAA.png)
