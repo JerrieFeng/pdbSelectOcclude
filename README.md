@@ -84,6 +84,9 @@ proteins.
 Chang, W, et al. (2017). Using sliders. Shiny from Rstudio.
 <https://shiny.rstudio.com/articles/sliders.html>.
 
+Chang, W, et al. (2021). shiny: Web Application Framework for R. R
+package version 1.7.1. <https://CRAN.R-project.org/package=shiny>.
+
 Skjaerven, L., Yao X.Q., Grant B.J. (2006). Getting started with Bio3D.
 Grant Lab: ComputationalBiophysics & Bioinformatics.
 <http://thegrantlab.org/bio3d/articles/online/intro_vignette/Bio3D_introduction.html#references-1>.

@@ -80,6 +80,8 @@ create the slider and allow users to interact with the proteins.
 
 Chang, W, et al. (2017). Using sliders. Shiny from Rstudio. https://shiny.rstudio.com/articles/sliders.html.
 
+Chang, W, et al. (2021). shiny: Web Application Framework for R. R package version 1.7.1. https://CRAN.R-project.org/package=shiny.
+
 Skjaerven, L., Yao X.Q., Grant B.J. (2006). Getting started with Bio3D. Grant Lab: ComputationalBiophysics & Bioinformatics.  http://thegrantlab.org/bio3d/articles/online/intro_vignette/Bio3D_introduction.html#references-1.
 
 Skjaerven, L., Yao X.Q., Grant B.J. (2020). chain.pdb: Find Possible PDB Chain Breaks.
@@ -88,6 +90,7 @@ bio3D. https://rdrr.io/cran/bio3d/man/chain.pdb.html.
 Su, W., Johnston, B. (2021). r3dmol: Create Interactive 3D Visualizations of Molecular Data. Github.https://github.com/swsoyee/r3dmol.
 
 Su, W., Johnston, B. (2021). r3dmol-shiny: Shiny bindings for r3dmol. https://rdrr.io/cran/r3dmol/man/r3dmol-shiny.html. 
+
 
 
 ## Acknowledgements
