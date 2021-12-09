@@ -159,6 +159,14 @@ Su, W., Johnston, B. (2021). r3dmol: Create Interactive 3D Visualizations of Mol
 
 Su, W., Johnston, B. (2021). r3dmol-shiny: Shiny bindings for r3dmol. https://rdrr.io/cran/r3dmol/man/r3dmol-shiny.html. 
 
+
+## Citation
+
+To cite this package:
+```{r}
+utils::citation("pdbSelectOcclude")
+```
+
 ----
 
 ```{r}

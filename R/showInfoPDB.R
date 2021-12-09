@@ -11,9 +11,10 @@
 #' AA and chain information.
 #'
 #' @examples
-#' # Using pdb2 file available with package
+#' # Using pdb2 and pdb file available with package
 #' showInfoPDB(pdb, "1bm8")
 #'
+#' showInfoPDB(pdb2, "1si4")
 #'
 #' @references
 #' Yao, X., G. Scarabelli, L. Skjaerven, and B. Grant (2020). Protein Structure Networks with Bio3D.
