@@ -1,7 +1,6 @@
 ---
 title: "Introduction_pbdSelectOcclude"
 author: "Jerrie Feng"
-output: rmarkdown::html_vignette
 output: 
   rmarkdown::html_vignette:
     toc: true
