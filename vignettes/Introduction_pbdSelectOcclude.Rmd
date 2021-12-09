@@ -1,6 +1,7 @@
 ---
 title: "Introduction_pbdSelectOcclude"
 author: "Jerrie Feng"
+date: "`r format(Sys.time(), '%d %b %Y')`"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -54,12 +55,11 @@ data(package = "pdbSelectOcclude")
 
 ## Components
 
-<div style="text-align:center"><img src="SILVA_A_A1.png" alt="SILVA_A_A1" width="500"/>
+<div style="text-align:center"><img src="../inst/extdata/overview.png" alt="overview" width="500"/>
 
-##Set up
+## Set up
 
-There are 5 functions in `pdbSelectOcclude`. All which require *bio3d*, *r3dmol*, and *dplyr*. Shiny will also
-need to be installed in order to interact with the 3D protein models.
+There are 5 functions in `pdbSelectOcclude`. All which require *bio3d*, *r3dmol*, and *dplyr*. Shiny will also need to be installed in order to interact with the 3D protein models.
 
 ```r
 if (! requireNamespace("dplyr", quietly=TRUE)) {
@@ -136,7 +136,7 @@ selChainSlider(pdbFile, "1SI4")
 #Shows the protein model on Shiny app.    
 ```
 
-<div style="text-align:center"><img src="selAA.png" alt="selecting occluding amino acid" width="500"/>
+<div style="text-align:center"><img src="../inst/extdata/selAA.png" alt="selecting occluding amino acid" width="500"/>
 <br>
 
 ## Package References
@@ -160,13 +160,6 @@ Su, W., Johnston, B. (2021). r3dmol: Create Interactive 3D Visualizations of Mol
 
 Su, W., Johnston, B. (2021). r3dmol-shiny: Shiny bindings for r3dmol. https://rdrr.io/cran/r3dmol/man/r3dmol-shiny.html. 
 
-
-## Citation
-
-To cite this package:
-```{r}
-utils::citation("pdbSelectOcclude")
-```
 
 ----
 
