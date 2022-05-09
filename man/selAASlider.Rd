@@ -22,7 +22,7 @@ interact and view occluded AA.
 }
 \examples{
 # Using pdb file available with package
-selAASlider(pdb, "1bm8")
+#selAASlider(pdb, "1bm8")
 
 }
 \references{

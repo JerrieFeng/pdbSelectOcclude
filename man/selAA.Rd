@@ -26,7 +26,7 @@ select which AA to view. This function allows user to interact and view occluded
 }
 \examples{
 # Using pdb file available with package
-selAA(1, pdb, "1bm8")
+#selAA(1, pdb, "1bm8")
 
 
 }

@@ -14,7 +14,7 @@ test_that("showInfoPDB with PDB file from package's data", {
 
   expect_equal(showInfoPDB$name, "1bm8")
   expect_type(showInfoPDB, "list")
-  expect_length(showInfoPDB, 3)
+  expect_length(showInfoPDB, 5)
 
 })
 
@@ -30,7 +30,7 @@ test_that("showInfoPDB with user's own PDB file", {
 
   expect_equal(showInfoPDB$nam, "1DUX")
   expect_type(showInfoPDB, "list")
-  expect_length(showInfoPDB, 3)
+  expect_length(showInfoPDB, 5)
 
 })
 
@@ -46,7 +46,7 @@ test_that("Testing for non-sensitive CAPS for name", {
 
   expect_equal(showInfoPDB$nam, "1BM8")
   expect_type(showInfoPDB, "list")
-  expect_length(showInfoPDB, 3)
+  expect_length(showInfoPDB, 5)
 
 })
 

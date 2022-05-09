@@ -3,7 +3,7 @@
 #' Function that takes a PDB file and visualizes it as a 3D model. The user to select
 #' which chain to view. This function allows user to interact and view occluded chains.
 #'
-#' @param index Valid index that refers to a chain found in the protein. Run 'showInfoPDB'
+#' @param letter Valid chain letter that refers to a chain found in the protein. Run 'showInfoPDB'
 #' to get all possible chains in chain_info
 #' @param pdbFile A PDB file, could be downloaded from PDB online
 #' @param name the 4-letter PDB codes/identifiers of the PDB file
@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' # Using pdb2 file available with package
-#' selChain(1, pdb2, "1SI4")
+#' #selChain("A", pdb2, "1SI4", "m_style_stick")
 #'
 #'
 #' @references
@@ -33,41 +33,46 @@
 #' @import r3dmol
 
 
-selChain <- function(index, pdbFile, name){
+selChain <- function(letter, pdbFile, name, style){
 
   # Get info from showInfoPDB
-  infoPDB <- pdbSelectOcclude::showInfoPDB(pdbFile, name)
+  infoPDB <- showInfoPDB(pdbFile, name)
 
-  #Check if given index is valid
-  if( index <= length(infoPDB$chain_info$chains) & index > 0){
-    cat( paste("Chosen chain is: ", infoPDB$chain_info$chains[index]) )
+  #Check if given letter is valid
+  if( letter %in% infoPDB$chain_info$chains){
+    cat( paste("Chosen chain is: ", letter) )
   } else{
-    stop( paste("Index number out of range! Please pick one of the chains that
+    stop( paste("Letter out of range! Please pick one of the chains that
                 exist in the protein: ", toString(infoPDB$chain_info$chains),
-                ". \n Pick by their index number (1,2,3...etc).") )
+                ". \n Pick by their letter (A,B,C...etc).") )
+  }
+
+  if(style == "m_style_stick"){
+    style=r3dmol::m_style_stick
+  }else{
+    style=r3dmol::m_style_sphere
   }
 
   #Visualize the protein
   r3dmol::r3dmol() %>%
     r3dmol::m_add_model(data = r3dmol::m_fetch_pdb(name)) %>%
-    r3dmol::m_set_style(style = r3dmol::m_style_cartoon()) %>%
     r3dmol::m_zoom_to() %>%
     r3dmol::m_add_style(
       style = c(
-        m_style_cartoon(color="#636efa")
+        style(colorScheme="shapely")
       ),
-      sel = m_sel(chain = infoPDB$chain_info$chains[index])
+      sel = m_sel(chain = letter)
     )  %>%
     r3dmol::m_add_style(
       style = c(
-        r3dmol::m_style_cartoon(opacity = 0.4)
+        r3dmol::m_style_cartoon(opacity = 0.8, color="#e3e5fc")
       ),
-      sel = m_sel(chain = infoPDB$chain_info$chains[-index])
+      sel = m_sel(chain = infoPDB$chain_info$chains[-(match(letter, infoPDB$chain_info$chains))])
     ) %>% r3dmol::m_add_label(
       text = paste("Residue Number:",
-                   infoPDB$chain_info$residue_num[index], ":",
-                   infoPDB$chain_info$residue_num[index+1],
-                   ", Chain:", infoPDB$chain_info$chains[index]),
+                   infoPDB$chain_info$residue_num[match(letter, infoPDB$chain_info$chains)], ":",
+                   infoPDB$chain_info$residue_num[match(letter, infoPDB$chain_info$chains) + 1],
+                   ", Chain:", letter),
       sel = m_vector3(-6.89, 0.75, 0.35),
       style = m_style_label(inFront = FALSE))
 
@@ -92,7 +97,7 @@ selChain <- function(index, pdbFile, name){
 #'
 #' @examples
 #' # Using pdb2 file available with package
-#' selChainSlider(pdb2, "1SI4")
+#' #selChainSlider(pdb2, "1SI4")
 #'
 #' @references
 #' Chang, W, et al. (2017). Using sliders. Shiny from Rstudio.
@@ -108,7 +113,7 @@ selChain <- function(index, pdbFile, name){
 selChainSlider <- function(pdbFile, name){
 
   # Get info from showInfoPDB
-  infoPDB <- pdbSelectOcclude::showInfoPDB(pdbFile, name)
+  infoPDB <- showInfoPDB(pdbFile, name)
 
   # Define UI
   ui <- fluidPage(

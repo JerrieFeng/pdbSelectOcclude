@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' # Using pdb file available with package
-#' selAA(1, pdb, "1bm8")
+#' #selAA(1, pdb, "1bm8")
 #'
 #'
 #' @references
@@ -31,10 +31,11 @@
 #' @import r3dmol
 
 
+
 selAA <- function(index, pdbFile, name){
 
   # Get info from showInfoPDB
-  infoPDB <- pdbSelectOcclude::showInfoPDB(pdbFile, name)
+  infoPDB <- showInfoPDB(pdbFile, name)
 
   #Check if given index is valid
   if( index <= length(infoPDB$AA_info$code_unique) & index > 0){
@@ -87,7 +88,7 @@ selAA <- function(index, pdbFile, name){
 #'
 #' @examples
 #' # Using pdb file available with package
-#' selAASlider(pdb, "1bm8")
+#' #selAASlider(pdb, "1bm8")
 #'
 #' @references
 #' Chang, W, et al. (2017). Using sliders. Shiny from Rstudio.
@@ -103,7 +104,7 @@ selAA <- function(index, pdbFile, name){
 selAASlider <- function(pdbFile, name){
 
   # Get info from showInfoPDB
-  infoPDB <- pdbSelectOcclude::showInfoPDB(pdbFile, name)
+  infoPDB <- showInfoPDB(pdbFile, name)
 
   # Define UI
   ui <- fluidPage(

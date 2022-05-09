@@ -1,49 +1,35 @@
 library(pdbSelectOcclude)
 
-#context("testing selChain")
-test_that("Testing that selChain returns correct information", {
-
-  index = 1
-  pdbFile = pdb2
-  name = "1SI4"
-
-  selChain <- selChain(
-    index = index,
-    pdbFile = pdbFile,
-    name = name
-  )
-
-  verify_output("Chosen chain is:  A", selChain)
-
-})
-
-
 #context("Checking for invalid user input for selChain")
 test_that("selChain error upon invalid user input", {
 
-  index = 1
+  letter = "A"
   pdbFile = pdb2
   name = "1SI4"
+  style = "m_style_stick"
 
-  #index is out of range
+  #letter is out of range
   expect_error(selChain <- selChain(
-    index = 0,
+    letter = 1,
     pdbFile = pdbFile,
-    name = name
+    name = name,
+    style = style
   ))
 
   #Doesn't provide correct 4-letter code/identifier
   expect_error(selChain <- selChain(
-    index = index,
+    letter = letter,
     pdbFile = pdbFile,
-    name = "1bm8"
+    name = "1bm8",
+    style = style
   ))
 
   #Doesn't provide a PDB file
   expect_error(selChain <- selChain(
-    index = index,
+    letter = letter,
     pdbFile = "1SI4",
-    name = name
+    name = name,
+    style = style
   ))
 
 })

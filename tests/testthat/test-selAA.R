@@ -1,23 +1,5 @@
 library(pdbSelectOcclude)
 
-#context("testing selAA")
-test_that("Testing that selAA returns correct information", {
-
-  index = 1
-  pdbFile = pdb
-  name = "1bm8"
-
-  selAA <- selAA(
-    index = index,
-    pdbFile = pdbFile,
-    name = name
-  )
-
-  verify_output("Chosen AA is:  GLN", selAA)
-
-})
-
-
 #context("Checking for invalid user input for selAA")
 test_that("selAA error upon invalid user input", {
 
