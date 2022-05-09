@@ -36,11 +36,20 @@ library("pdbSelectOcclude")
 To run the Shiny App:
 
 ``` r
-#Example of visualizing occluded AA
-selAASlider(pdb, "1bm8")
 
-#Example of visualizing occluded protein chains
+#Example of visualizing a protein
+runModel(pdb2, "1SI4")
+
+#Example for running individual selecting components:
+# 1. Selecting by AA
+selAASlider(pdb, "1bm8")
+# 2. Selecting by Chains
 selChainSlider(pdb2, "1SI4")
+# 3. Selecting by polarity
+selHphobSlider(pdb, "1bm8")
+# 4. Selecting by UniProt values
+selUniShiny(pdb, "1bm8")
+
 ```
 
 ![](./inst/extdata/selAA.png)
@@ -52,14 +61,11 @@ ls("package:pdbSelectOcclude")
 data(package = "pdbSelectOcclude") # includes PDB files
 ```
 
-`pdbSelectOcclude` contains 5 functions. The *showInfoPDB* function
+`pdbSelectOcclude` contains 6 functions. The *showInfoPDB* function
 takes a PDB file as input, and then returns the AA (amino acid) and
 chain information of the chosen protein. *selAA* function allow users to
-select an \[occluded\] AA to view and interact with. *selAASlider*
-function allow users to interact with any AA with a slider through Shiny
-App. *selChain* function allow users to select an \[occluded\] chain to
-view and interact with. *selChainSlider* function allow users to
-interact with any chain with a slider through Shiny App.
+select an \[occluded\] AA to view and interact with. *selChain* function allow users to select an \[occluded\] chain to
+view and interact with. *selHphob* function allow users to interact with the hydrophobicity/polarity of the AA components through Shiny App. *selUniProt* allows users to select and interact according to the UniProt values by Shiny App.
 
 An overview of the package and examples of what it should produce is
 illustrated below.
